@@ -46,7 +46,7 @@
         @media (hover: hover) { .glass-card:hover { border-color: var(--pride-pink); transform: translateY(-12px); box-shadow: 0 25px 50px rgba(255, 0, 255, 0.15); } }
 
         .timeline-line { position: absolute; left: 50%; width: 1px; height: 100%; background: linear-gradient(to bottom, var(--pride-blue), var(--pride-pink), transparent); transform: translateX(-50%); }
-        @media (max-width: 768px) { .timeline-line { left: 24px; transform: none; } }
+        @media (max-width: 768px) { .timeline-line { left: 28px; transform: none; } }
 
         .section-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
         .section-reveal.visible { opacity: 1; transform: translateY(0); }
@@ -56,7 +56,7 @@
         #mobile-menu.open { transform: translateX(0); }
         .sticky-nav { background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         
-        .nav-link::after { content: ''; position: absolute; bottom: 4px; left: 0; width: 0; height: 2px; background: var(--pride-pink); transition: width 0.3s; }
+        .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--pride-pink); transition: width 0.3s; }
         .nav-link:hover::after { width: 100%; }
 
         .glitch-text { position: relative; }
@@ -79,8 +79,8 @@
     <div id="scroll-progress"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 p-4 sticky-nav">
-        <div class="max-w-[1700px] mx-auto grid grid-cols-2 md:grid-cols-3 items-center">
+    <header class="fixed top-0 left-0 w-full z-50 p-4 sticky-nav">
+        <nav class="max-w-[1700px] mx-auto grid grid-cols-2 md:grid-cols-3 items-center">
             <div class="flex justify-start">
                 <a href="#" class="text-base md:text-lg font-black uppercase tracking-tighter interactive whitespace-nowrap">
                     Binary <span class="text-pink-500">Break India</span>
@@ -92,19 +92,19 @@
                 <a href="#2026pivot" class="nav-link relative text-pink-500 interactive">2026 PIVOT</a>
                 <a href="#socio" class="nav-link relative interactive">SOCIO-ECONOMIC</a>
             </div>
-            <div class="flex items-center justify-end gap-6">
+            <div class="flex items-center justify-end gap-3 md:gap-6">
                 <a href="/pdf/Binary_Break_India_Research.pdf" download class="hidden lg:flex items-center gap-2 text-white/40 hover:text-white transition-colors interactive text-[9px] font-bold uppercase tracking-[0.4em]">
                     <i data-lucide="file-text" class="w-3 h-3"></i> PDF
                 </a>
-                <button onclick="openModal()" class="bg-white text-black px-6 py-2.5 rounded-full text-[9px] font-black uppercase hover:bg-pink-500 hover:text-white transition-all interactive shadow-xl tracking-widest">
+                <button onclick="openModal()" class="bg-white text-black px-4 md:px-6 py-2 md:py-2.5 rounded-full text-[9px] font-black uppercase hover:bg-pink-500 hover:text-white transition-all interactive shadow-xl tracking-widest">
                     TAKE ACTION
                 </button>
                 <button id="menu-toggle" class="md:hidden text-white p-1 interactive">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black flex flex-col p-8 pt-24">
@@ -179,11 +179,11 @@
             </div>
 
             <div class="flex flex-col md:flex-row-reverse items-center mb-24 section-reveal" style="--stagger-idx: 2">
-                <div class="w-full md:w-1/2 md:pl-16 mb-8 md:mb-0 pl-14 md:pl-24">
+                <div class="w-full md:w-1/2 md:pl-16 mb-8 md:mb-0 pl-14">
                     <h3 class="text-3xl font-black text-yellow-400 mb-3 tracking-tighter">Mughal Administrative Elite</h3>
                     <p class="text-lg text-gray-400 leading-relaxed font-light">During the Mughal Zenith, <i>hijras</i> held tax-collection and military generalship roles, maintaining a "magnificent past" as imperial nobility.</p>
                 </div>
-                <div class="absolute left-0 md:relative w-14 h-14 bg-yellow-500 rounded-full z-10 flex items-center justify-center border-[6px] border-black interactive shadow-2xl transition-all hover:scale-125">
+                <div class="absolute left-0 md:relative w-14 h-14 shrink-0 bg-yellow-500 rounded-full z-10 flex items-center justify-center border-[6px] border-black interactive shadow-2xl transition-all hover:scale-125">
                     <i data-lucide="crown" class="w-6 h-6 text-black"></i>
                 </div>
                 <div class="w-full md:w-1/2 md:pr-16 md:text-right pl-14 md:pl-0">
@@ -196,10 +196,10 @@
                     <h3 class="text-3xl font-black text-red-500 mb-3 tracking-tighter">Colonial Criminalization</h3>
                     <p class="text-lg text-gray-400 leading-relaxed font-light">Victorian impositions pathologized gender fluidity through Section 377 (1860) and the Criminal Tribes Act (1871), institutionalizing stigma.</p>
                 </div>
-                <div class="absolute left-0 md:relative w-14 h-14 bg-red-600 rounded-full z-10 flex items-center justify-center border-[6px] border-black interactive shadow-2xl transition-all hover:scale-125">
+                <div class="absolute left-0 md:relative w-14 h-14 shrink-0 bg-red-600 rounded-full z-10 flex items-center justify-center border-[6px] border-black interactive shadow-2xl transition-all hover:scale-125">
                     <i data-lucide="gavel" class="w-6 h-6 text-black"></i>
                 </div>
-                <div class="w-full md:w-1/2 md:pl-16 pl-14 md:pl-16">
+                <div class="w-full md:w-1/2 md:pl-16 pl-14">
                     <span class="text-[10px] font-black px-4 py-1.5 bg-red-900 text-red-100 rounded-full mb-3 inline-block border border-red-500/20">1858 – 1947 BRITISH RULE</span>
                 </div>
             </div>
@@ -212,32 +212,48 @@
             <h2 class="text-4xl md:text-5xl font-black mb-16 section-reveal uppercase tracking-tighter" style="--stagger-idx: 0">Transformative <span class="gradient-text">Constitutionalism</span></h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="glass-card p-10 rounded-3xl relative overflow-hidden interactive section-reveal floating" style="--stagger-idx: 1">
-                    <div class="text-pink-500 text-4xl mb-5 font-black tracking-tighter">2014</div>
-                    <h4 class="text-xl font-black mb-4 uppercase tracking-tighter">NALSA Verdict</h4>
-                    <p class="text-base text-gray-400 mb-3 leading-relaxed font-light">Prioritized psychological sex over biological sex, granting the right to self-identification.</p>
-                    <div class="absolute -right-4 -bottom-4 opacity-10"><i data-lucide="fingerprint" class="w-20 h-20"></i></div>
+                <div class="section-reveal h-full" style="--stagger-idx: 1">
+                    <div class="floating h-full">
+                        <div class="glass-card p-10 rounded-3xl relative overflow-hidden interactive h-full">
+                            <div class="text-pink-500 text-4xl mb-5 font-black tracking-tighter">2014</div>
+                            <h4 class="text-xl font-black mb-4 uppercase tracking-tighter">NALSA Verdict</h4>
+                            <p class="text-base text-gray-400 mb-3 leading-relaxed font-light">Prioritized psychological sex over biological sex, granting the right to self-identification.</p>
+                            <div class="absolute -right-4 -bottom-4 opacity-10"><i data-lucide="fingerprint" class="w-20 h-20"></i></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="glass-card p-10 rounded-3xl relative overflow-hidden interactive section-reveal floating" style="--stagger-idx: 2">
-                    <div class="text-blue-400 text-4xl mb-5 font-black tracking-tighter">2017</div>
-                    <h4 class="text-xl font-black mb-4 uppercase tracking-tighter">Puttaswamy</h4>
-                    <p class="text-base text-gray-400 mb-3 leading-relaxed font-light">Established Privacy as a fundamental right, protecting orientation as a core identity pillar.</p>
-                    <div class="absolute -right-4 -bottom-4 opacity-10"><i data-lucide="shield-check" class="w-20 h-20"></i></div>
+                <div class="section-reveal h-full" style="--stagger-idx: 2">
+                    <div class="floating h-full">
+                        <div class="glass-card p-10 rounded-3xl relative overflow-hidden interactive h-full">
+                            <div class="text-blue-400 text-4xl mb-5 font-black tracking-tighter">2017</div>
+                            <h4 class="text-xl font-black mb-4 uppercase tracking-tighter">Puttaswamy</h4>
+                            <p class="text-base text-gray-400 mb-3 leading-relaxed font-light">Established Privacy as a fundamental right, protecting orientation as a core identity pillar.</p>
+                            <div class="absolute -right-4 -bottom-4 opacity-10"><i data-lucide="shield-check" class="w-20 h-20"></i></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="glass-card p-10 rounded-3xl relative overflow-hidden border-pink-500/30 border-[2px] interactive section-reveal floating" style="--stagger-idx: 3">
-                    <div class="text-pink-500 text-4xl mb-5 font-black tracking-tighter">2018</div>
-                    <h4 class="text-xl font-black mb-4 uppercase tracking-tighter">Navtej Johar</h4>
-                    <p class="text-base text-gray-400 mb-3 leading-relaxed font-light">Finally decriminalized Section 377, ending 150 years of institutionalized colonial harassment.</p>
-                    <div class="absolute -right-4 -bottom-4 opacity-10"><i data-lucide="heart" class="w-20 h-20"></i></div>
+                <div class="section-reveal h-full" style="--stagger-idx: 3">
+                    <div class="floating h-full">
+                        <div class="glass-card p-10 rounded-3xl relative overflow-hidden border-pink-500/30 border-[2px] interactive h-full">
+                            <div class="text-pink-500 text-4xl mb-5 font-black tracking-tighter">2018</div>
+                            <h4 class="text-xl font-black mb-4 uppercase tracking-tighter">Navtej Johar</h4>
+                            <p class="text-base text-gray-400 mb-3 leading-relaxed font-light">Finally decriminalized Section 377, ending 150 years of institutionalized colonial harassment.</p>
+                            <div class="absolute -right-4 -bottom-4 opacity-10"><i data-lucide="heart" class="w-20 h-20"></i></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="glass-card p-10 rounded-3xl relative overflow-hidden interactive section-reveal floating" style="--stagger-idx: 4">
-                    <div class="text-gray-500 text-4xl mb-5 font-black tracking-tighter">2023</div>
-                    <h4 class="text-xl font-black mb-4 uppercase tracking-tighter">Supriyo Case</h4>
-                    <p class="text-base text-gray-400 mb-3 leading-relaxed font-light">Refused marriage equality, leaving couples in "toothless dignity" without full parity.</p>
-                    <div class="absolute -right-4 -bottom-4 opacity-10"><i data-lucide="scale" class="w-20 h-20"></i></div>
+                <div class="section-reveal h-full" style="--stagger-idx: 4">
+                    <div class="floating h-full">
+                        <div class="glass-card p-10 rounded-3xl relative overflow-hidden interactive h-full">
+                            <div class="text-gray-500 text-4xl mb-5 font-black tracking-tighter">2023</div>
+                            <h4 class="text-xl font-black mb-4 uppercase tracking-tighter">Supriyo Case</h4>
+                            <p class="text-base text-gray-400 mb-3 leading-relaxed font-light">Refused marriage equality, leaving couples in "toothless dignity" without full parity.</p>
+                            <div class="absolute -right-4 -bottom-4 opacity-10"><i data-lucide="scale" class="w-20 h-20"></i></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -437,7 +453,12 @@
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const href = this.getAttribute('href');
+                if (href === '#') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+                const target = document.getElementById(href.substring(1));
                 if (target) {
                     const offset = 80;
                     window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - offset, behavior: 'smooth' });
