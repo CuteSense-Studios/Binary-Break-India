@@ -199,6 +199,48 @@
             #cursor { display: none !important; }
             * { cursor: auto !important; } 
         }
+
+        /* Glitch Animation */
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--pride-pink);
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: 2px 0 var(--pride-blue);
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim-1 {
+            0% { clip-path: inset(20% 0 80% 0); }
+            20% { clip-path: inset(60% 0 10% 0); }
+            40% { clip-path: inset(40% 0 50% 0); }
+            60% { clip-path: inset(80% 0 5% 0); }
+            80% { clip-path: inset(10% 0 70% 0); }
+            100% { clip-path: inset(30% 0 20% 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip-path: inset(10% 0 60% 0); }
+            20% { clip-path: inset(30% 0 20% 0); }
+            40% { clip-path: inset(70% 0 10% 0); }
+            60% { clip-path: inset(20% 0 50% 0); }
+            80% { clip-path: inset(90% 0 5% 0); }
+            100% { clip-path: inset(5% 0 80% 0); }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -383,7 +425,10 @@
         <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
             <div class="w-full lg:w-1/2 section-reveal">
                 <div class="inline-block px-4 py-1 bg-red-600 text-white font-black text-[9px] mb-8 rounded-full uppercase tracking-widest animate-pulse">URGENT: LEGISLATIVE BACKSLIDING</div>
-                <h2 class="text-5xl md:text-7xl font-black mb-8 uppercase tracking-tighter leading-none">The 2026 <br><span class="text-red-500">Backsliding</span></h2>
+                <h2 class="text-5xl md:text-7xl font-black mb-8 uppercase tracking-tighter leading-none">
+                    <span class="glitch" data-text="The 2026">The 2026</span> <br>
+                    <span class="glitch text-red-500" data-text="Backsliding">Backsliding</span>
+                </h2>
                 <p class="text-xl text-gray-300 leading-relaxed mb-10 font-light">
                     The 2026 Amendment re-introduces medical gatekeeping and penalizes supportive allies with criminal risk.
                 </p>
