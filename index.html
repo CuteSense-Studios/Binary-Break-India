@@ -341,13 +341,17 @@
 
             <!-- Item 2: Mughal Era -->
             <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center mb-32 section-reveal">
-                <div class="w-full md:w-1/2 md:pl-20 pl-16 md:pl-20">
-                    <span class="text-[9px] font-black tracking-widest text-yellow-500 uppercase mb-4 block">Mughal Era Excellence</span>
-                    <h3 class="text-3xl md:text-4xl font-black mb-4 tracking-tighter">Administrative Elite</h3>
-                    <p class="text-gray-400 leading-relaxed font-light text-lg">During the Mughal Zenith, <i>hijras</i> served as imperial nobility, generals, and trusted advisors to the crown.</p>
+                <div class="w-full md:w-1/2 md:pl-20 pl-16 md:pl-20 relative group">
+                    <span class="text-[9px] font-black tracking-widest text-yellow-500 uppercase mb-4 flex items-center gap-2">
+                        <i data-lucide="sparkles" class="w-3 h-3"></i> Mughal Era Excellence
+                    </span>
+                    <h3 class="text-3xl md:text-4xl font-black mb-4 tracking-tighter text-yellow-400">Administrative Elite</h3>
+                    <!-- Decorative hover line -->
+                    <div class="absolute left-10 md:left-14 top-10 bottom-0 w-[2px] bg-gradient-to-b from-yellow-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <p class="text-gray-400 leading-relaxed font-light text-lg">During the Mughal Zenith, the revered <span class="text-yellow-500/90 font-medium italic">Khwaja Sira</span> served as imperial nobility, commanding armies as generals, guarding royal sanctuaries, and acting as indispensable political advisors to the crown.</p>
                 </div>
-                <div class="timeline-node absolute left-[28px] md:left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-yellow-500/10 border-2 border-yellow-500 z-10 shadow-[0_0_20px_rgba(234,179,8,0.3)]">
-                    <i data-lucide="crown" class="w-6 h-6 text-yellow-500"></i>
+                <div class="timeline-node absolute left-[28px] md:left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-yellow-500 border-2 border-yellow-400 z-10 shadow-[0_0_30px_rgba(234,179,8,0.4)] transition-all duration-500 hover:scale-110 hover:shadow-[0_0_50px_rgba(234,179,8,0.8)] hover:bg-yellow-400 cursor-pointer">
+                    <i data-lucide="crown" class="w-6 h-6 text-yellow-100 animate-pulse"></i>
                 </div>
                 <div class="hidden md:block w-1/2"></div>
             </div>
