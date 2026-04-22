@@ -1,3 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@source "./index.html"; 
+@import "tailwindcss";
+
+@theme {
+  --color-pride-pink: #ff00ff;
+  --color-pride-blue: #00d2ff;
+  --color-bg-dark: #070707;
+
+  /* Custom Fonts */
+  --font-outfit: "Outfit", sans-serif;
+  --font-unbounded: "Unbounded", sans-serif;
+  --font-borel: "Borel", cursive;
+
+}
+
+/* You can keep your custom CSS here or in the HTML, 
+   but v4 prefers them after the @import */
