@@ -3,16 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Mapping the ontological evolution of gender identity in India, from pre-colonial Tritiya Prakrti to the high-stakes 2026 legislative pivot. Join the advocacy project against medical gatekeeping.">
+    <meta name="keywords" content="Binary Break India, Tritiya Prakrti, transgender rights India, NALSA verdict, Section 377, 2026 Amendment, LGBTQ+ advocacy India, gender identity">
+    <meta name="author" content="CuteSense Studios">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Binary Break India | The Advocacy Project">
+    <meta property="og:description" content="Mapping the trajectory from pre-colonial Tritiya Prakrti to the high-stakes 2026 legislative pivot. Decolonizing identity in modern India.">
+    <meta property="og:image" content="assets/icons/companylogo.webp">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Binary Break India | The Advocacy Project">
+    <meta name="twitter:description" content="Mapping the trajectory from pre-colonial Tritiya Prakrti to the high-stakes 2026 legislative pivot. Decolonizing identity in modern India.">
+    <meta name="twitter:image" content="assets/icons/companylogo.webp">
+
     <title>Binary Break India | The Advocacy Project</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff00ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='2' width='20' height='20' rx='2' ry='2'></rect><path d='M10 10v4'></path><path d='M14 10v4'></path></svg>">
     
-    <!-- Tailwind via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Local Tailwind CSS -->
+    <link href="assets/css/tailwind.css" rel="stylesheet">
+    <!-- Local Lucide Icons -->
+    <script src="node_modules/lucide/dist/cjs/lucide.js"></script>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&family=Unbounded:wght@900&family=Borel&display=swap');
+        /* Local Font Faces */
+        @font-face {
+            font-family: 'Outfit';
+            src: url('assets/fonts/outfit-v15-latin/outfit-v15-latin-300.woff2') format('woff2');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Outfit';
+            src: url('assets/fonts/outfit-v15-latin/outfit-v15-latin-regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Outfit';
+            src: url('assets/fonts/outfit-v15-latin/outfit-v15-latin-600.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Outfit';
+            src: url('assets/fonts/outfit-v15-latin/outfit-v15-latin-900.woff2') format('woff2');
+            font-weight: 900;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Unbounded';
+            src: url('assets/fonts/unbounded-v12-latin/unbounded-v12-latin-900.woff2') format('woff2');
+            font-weight: 900;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Borel';
+            src: url('assets/fonts/borel-v10-latin-regular/borel-v10-latin-regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
 
         :root {
             --pride-pink: #ff00ff;
@@ -203,7 +264,7 @@
                 </div>
                 <!-- Node Fix: Filter applied to om-icon.svg to turn it blue via code -->
                 <div class="timeline-node absolute left-[28px] md:left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-blue-500/10 border-2 border-blue-400 z-10 shadow-[0_0_20px_rgba(0,210,255,0.4)]">
-                    <img src="assets/icons/om-icon.svg" alt="" class="w-7 h-7 object-contain block pointer-events-none" style="filter: invert(72%) sepia(87%) saturate(545%) hue-rotate(185deg) brightness(101%) contrast(102%);">
+                    <img src="assets/icons/om-icon.svg" alt="Om Symbol - Sacred Third Nature" class="w-7 h-7 object-contain block pointer-events-none" style="filter: invert(72%) sepia(87%) saturate(545%) hue-rotate(185deg) brightness(101%) contrast(102%);">
                 </div>
                 <div class="hidden md:block w-1/2"></div>
             </div>
@@ -372,7 +433,7 @@
         <div class="max-w-7xl mx-auto flex flex-col items-center gap-12">
             <div class="flex items-center gap-6 group interactive">
                 <div class="w-16 h-16 bg-white/5 rounded-2xl p-2 flex items-center justify-center group-hover:rotate-12 transition-all duration-500">
-                    <img src="assets/icons/companylogo.webp" alt="Logo" class="w-full h-full object-contain">
+                    <img src="assets/icons/companylogo.webp" alt="CuteSense Studios Logo" class="w-full h-full object-contain">
                 </div>
                 <div class="text-4xl borel pt-2">CuteSense Studios</div>
             </div>
