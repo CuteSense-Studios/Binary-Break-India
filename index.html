@@ -79,10 +79,11 @@
             --pride-pink: #ff00ff;
             --pride-blue: #00d2ff;
             --bg-dark: #070707;
+            --royal-yellow: #FFD700;
             --glass: rgba(255, 255, 255, 0.03);
         }
 
-        /* CURSOR SYSTEM: Forces the default cursor to remain hidden everywhere */
+        /* CURSOR SYSTEM */
         * { cursor: none !important; }
 
         body { 
@@ -96,7 +97,6 @@
         h1, h2, h3, .unbounded { font-family: 'Unbounded', sans-serif; letter-spacing: -0.05em; }
         .borel { font-family: 'Borel', cursive; }
 
-        /* Custom Cursor Dot */
         #cursor {
             width: 12px; height: 12px; background: #fff; border-radius: 50%;
             position: fixed; pointer-events: none; z-index: 10000;
@@ -107,11 +107,10 @@
 
         #scroll-progress { 
             position: fixed; top: 0; left: 0; height: 2px; 
-            background: linear-gradient(90deg, var(--pride-blue), var(--pride-pink), #ffcc00); 
+            background: linear-gradient(90deg, var(--pride-blue), var(--pride-pink), var(--royal-yellow)); 
             z-index: 100; width: 0%; 
         }
 
-        /* Responsive Hero Typography */
         .hero-title {
             font-size: clamp(3.2rem, 9.5vw, 8.2rem);
             line-height: 0.9;
@@ -141,7 +140,6 @@
             background: rgba(255, 255, 255, 0.06);
         }
 
-        /* Float Animations - Restriced to Legal section */
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-15px) rotate(0.5deg); }
@@ -157,7 +155,6 @@
         .stagger-3 { animation-delay: 2.4s; }
         .stagger-4 { animation-delay: 3.6s; }
 
-        /* Flowy Border Animation */
         @keyframes border-flow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -189,57 +186,30 @@
         }
         .nav-link:hover::after { width: 100%; }
 
-        /* Timeline Alignment Fixes */
-        .timeline-node { display: flex; align-items: center; justify-content: center; }
-
         @media (max-width: 768px) {
             .timeline-line { left: 28px !important; }
             .timeline-node { left: 28px !important; transform: translateX(-50%); }
-            /* Keep custom cursor hidden even on tablets if needed, though mobile typically ignores none */
             #cursor { display: none !important; }
             * { cursor: auto !important; } 
         }
 
         /* Glitch Animation */
-        .glitch {
-            position: relative;
-            display: inline-block;
+        .glitch { position: relative; display: inline-block; }
+        .glitch::before, .glitch::after {
+            content: attr(data-text); position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-dark);
         }
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-dark);
-        }
-        .glitch::before {
-            left: 2px;
-            text-shadow: -2px 0 var(--pride-pink);
-            animation: glitch-anim-1 2s infinite linear alternate-reverse;
-        }
-        .glitch::after {
-            left: -2px;
-            text-shadow: 2px 0 var(--pride-blue);
-            animation: glitch-anim-2 3s infinite linear alternate-reverse;
-        }
+        .glitch::before { left: 2px; text-shadow: -2px 0 var(--pride-pink); animation: glitch-anim-1 2s infinite linear alternate-reverse; }
+        .glitch::after { left: -2px; text-shadow: 2px 0 var(--pride-blue); animation: glitch-anim-2 3s infinite linear alternate-reverse; }
         @keyframes glitch-anim-1 {
-            0% { clip-path: inset(20% 0 80% 0); }
-            20% { clip-path: inset(60% 0 10% 0); }
-            40% { clip-path: inset(40% 0 50% 0); }
-            60% { clip-path: inset(80% 0 5% 0); }
-            80% { clip-path: inset(10% 0 70% 0); }
-            100% { clip-path: inset(30% 0 20% 0); }
+            0% { clip-path: inset(20% 0 80% 0); } 20% { clip-path: inset(60% 0 10% 0); }
+            40% { clip-path: inset(40% 0 50% 0); } 60% { clip-path: inset(80% 0 5% 0); }
+            80% { clip-path: inset(10% 0 70% 0); } 100% { clip-path: inset(30% 0 20% 0); }
         }
         @keyframes glitch-anim-2 {
-            0% { clip-path: inset(10% 0 60% 0); }
-            20% { clip-path: inset(30% 0 20% 0); }
-            40% { clip-path: inset(70% 0 10% 0); }
-            60% { clip-path: inset(20% 0 50% 0); }
-            80% { clip-path: inset(90% 0 5% 0); }
-            100% { clip-path: inset(5% 0 80% 0); }
+            0% { clip-path: inset(10% 0 60% 0); } 20% { clip-path: inset(30% 0 20% 0); }
+            40% { clip-path: inset(70% 0 10% 0); } 60% { clip-path: inset(20% 0 50% 0); }
+            80% { clip-path: inset(90% 0 5% 0); } 100% { clip-path: inset(5% 0 80% 0); }
         }
     </style>
 </head>
@@ -279,9 +249,9 @@
         <a href="#legal" class="text-4xl font-black uppercase mobile-nav-link">Legal</a>
         <a href="#2026pivot" class="text-4xl font-black uppercase text-pink-500 mobile-nav-link">2026 Pivot</a>
         <a href="#socio" class="text-4xl font-black uppercase mobile-nav-link">Socio-Economic</a>
-            <a href="./pdf/Binary_Break_India_Research.pdf" target="_blank" download class="text-4xl font-black uppercase text-blue-400 mobile-nav-link flex items-center gap-4 mt-8">
-                <i data-lucide="download" class="w-8 h-8"></i> PDF Archive
-            </a>
+        <a href="./pdf/Binary_Break_India_Research.pdf" target="_blank" download class="text-4xl font-black uppercase text-blue-400 mobile-nav-link flex items-center gap-4 mt-8">
+            <i data-lucide="download" class="w-8 h-8"></i> PDF Archive
+        </a>
     </div>
 
     <!-- Hero Section -->
@@ -322,7 +292,6 @@
         </div>
 
         <div class="relative">
-            <!-- Vertical Gradient Line -->
             <div class="timeline-line absolute left-[28px] md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-blue-500 via-pink-500 to-transparent"></div>
             
             <!-- Item 1: Ancient Tritiya Prakrti -->
@@ -332,26 +301,25 @@
                     <h3 class="text-3xl md:text-4xl font-black mb-4 tracking-tighter">Ancient Tritiya Prakrti</h3>
                     <p class="text-gray-400 leading-relaxed font-light text-lg">Ancient Vedic traditions recognized a sacred "third nature," granting high spiritual authority to gender-fluid individuals.</p>
                 </div>
-                <!-- Node Fix: Filter applied to om-icon.svg to turn it blue via code -->
-                <div class="timeline-node absolute left-[28px] md:left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-blue-500/10 border-2 border-blue-400 z-10 shadow-[0_0_20px_rgba(0,210,255,0.4)]">
-                    <img src="assets/icons/om-icon.svg" alt="Om Symbol - Sacred Third Nature" class="w-7 h-7 object-contain block pointer-events-none" style="filter: invert(72%) sepia(87%) saturate(545%) hue-rotate(185deg) brightness(101%) contrast(102%);">
+                <div class="timeline-node absolute left-[28px] md:left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-blue-500/10 border-2 border-blue-400 z-10 shadow-[0_0_20px_rgba(0,210,255,0.4)] flex items-center justify-center">
+                    <img src="assets/icons/om-icon.svg" alt="Om Symbol" class="w-7 h-7 object-contain block pointer-events-none" style="filter: invert(72%) sepia(87%) saturate(545%) hue-rotate(185deg) brightness(101%) contrast(102%);">
                 </div>
                 <div class="hidden md:block w-1/2"></div>
             </div>
 
-            <!-- Item 2: Mughal Era -->
+            <!-- Item 2: Mughal Era (UPDATED) -->
             <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center mb-32 section-reveal">
                 <div class="w-full md:w-1/2 md:pl-20 pl-16 md:pl-20 relative group">
                     <span class="text-[9px] font-black tracking-widest text-yellow-500 uppercase mb-4 flex items-center gap-2">
                         <i data-lucide="sparkles" class="w-3 h-3"></i> Mughal Era Excellence
                     </span>
                     <h3 class="text-3xl md:text-4xl font-black mb-4 tracking-tighter text-yellow-400">Administrative Elite</h3>
-                    <!-- Decorative hover line -->
                     <div class="absolute left-10 md:left-14 top-10 bottom-0 w-[2px] bg-gradient-to-b from-yellow-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                    <p class="text-gray-400 leading-relaxed font-light text-lg">During the Mughal Zenith, the revered <span class="text-yellow-500/90 font-medium italic">Khwaja Sira</span> served as imperial nobility, commanding armies as generals, guarding royal sanctuaries, and acting as indispensable political advisors to the crown.</p>
+                    <p class="text-gray-400 leading-relaxed font-light text-lg">During the Mughal Zenith, the revered <span class="text-yellow-500/90 font-medium italic">Khwaja Sira</span> served as imperial nobility, commanding armies as generals and acting as indispensable political advisors.</p>
                 </div>
-                <div class="timeline-node absolute left-[28px] md:left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-yellow-500 border-2 border-yellow-400 z-10 shadow-[0_0_30px_rgba(234,179,8,0.4)] transition-all duration-500 hover:scale-110 hover:shadow-[0_0_50px_rgba(234,179,8,0.8)] hover:bg-yellow-400 cursor-pointer">
-                    <i data-lucide="crown" class="w-6 h-6 text-yellow-100 animate-pulse"></i>
+                <!-- Updated Node: Solid Royal Yellow Fill & Yellow Crown -->
+                <div class="timeline-node absolute left-[28px] md:left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#FFD700] border-2 border-[#FFD700] z-10 shadow-[0_0_30px_rgba(255,215,0,0.5)] transition-all duration-500 hover:scale-110 hover:shadow-[0_0_50px_rgba(255,215,0,0.8)] flex items-center justify-center">
+                    <i data-lucide="crown" class="w-7 h-7 text-amber-900 fill-amber-500/20"></i>
                 </div>
                 <div class="hidden md:block w-1/2"></div>
             </div>
@@ -363,7 +331,7 @@
                     <h3 class="text-3xl md:text-4xl font-black mb-4 tracking-tighter">Criminalization</h3>
                     <p class="text-gray-400 leading-relaxed font-light text-lg">Victorian impositions pathologized identity through Section 377 and the Criminal Tribes Act of 1871.</p>
                 </div>
-                <div class="timeline-node absolute left-[28px] md:left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-red-500/10 border-2 border-red-500 z-10 shadow-[0_0_20px_rgba(239,68,68,0.3)]">
+                <div class="timeline-node absolute left-[28px] md:left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-red-500/10 border-2 border-red-500 z-10 shadow-[0_0_20px_rgba(239,68,68,0.3)] flex items-center justify-center">
                     <i data-lucide="gavel" class="w-6 h-6 text-red-500"></i>
                 </div>
                 <div class="hidden md:block w-1/2"></div>
@@ -371,7 +339,7 @@
         </div>
     </section>
 
-    <!-- Judicial Milestones (ONLY section with floating) -->
+    <!-- Judicial Milestones -->
     <section id="legal" class="py-32 px-6 scroll-mt-20">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-4xl md:text-6xl font-black mb-20 section-reveal uppercase tracking-tighter">Judicial <span class="gradient-text">Milestones</span></h2>
@@ -424,7 +392,7 @@
         </div>
     </section>
 
-    <!-- 2026 Pivot Section (STATIC) -->
+    <!-- 2026 Pivot Section -->
     <section id="2026pivot" class="py-32 px-6 bg-red-950/5 border-y border-red-500/10 scroll-mt-24">
         <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
             <div class="w-full lg:w-1/2 section-reveal">
@@ -469,7 +437,7 @@
         </div>
     </section>
 
-    <!-- Socio Economic (STATIC) -->
+    <!-- Socio Economic -->
     <section id="socio" class="py-32 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="mb-24 text-center section-reveal">
@@ -510,7 +478,7 @@
         <div class="max-w-7xl mx-auto flex flex-col items-center gap-12">
             <div class="flex items-center gap-6 group interactive">
                 <div class="w-16 h-16 bg-white/5 rounded-2xl p-2 flex items-center justify-center group-hover:rotate-12 transition-all duration-500">
-                    <img src="assets/icons/companylogo.webp" alt="CuteSense Studios Logo" class="w-full h-full object-contain">
+                    <img src="assets/icons/companylogo.webp" alt="Logo" class="w-full h-full object-contain">
                 </div>
                 <div class="text-4xl borel pt-2">CuteSense Studios</div>
             </div>
@@ -535,10 +503,8 @@
     </div>
 
     <script>
-        // Init Lucide Icons
         lucide.createIcons();
 
-        // Custom Cursor Dot Logic
         const cursor = document.getElementById('cursor');
         const glows = [document.getElementById('glow-1'), document.getElementById('glow-2')];
         const isTouch = (('ontouchstart' in window) || (navigator.maxTouchPoints > 0));
@@ -570,7 +536,6 @@
             document.addEventListener('mouseout', () => cursor.classList.remove('cursor-hover'));
         }
 
-        // Scroll Logic
         window.addEventListener('scroll', () => {
             const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
             document.getElementById('scroll-progress').style.width = scrolled + "%";
@@ -597,9 +562,8 @@
                 }
             });
         }
-        reveal(); // Initial call
+        reveal();
 
-        // Modal Controls
         function openModal() {
             const m = document.getElementById('advocacy-modal'), c = document.getElementById('modal-content');
             m.classList.remove('hidden');
@@ -613,7 +577,6 @@
             document.body.style.overflow = '';
         }
 
-        // Mobile Nav Logic
         const menu = document.getElementById('mobile-menu');
         document.getElementById('menu-toggle').addEventListener('click', () => {
             menu.style.transform = 'translateX(0)';
