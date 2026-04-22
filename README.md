@@ -94,6 +94,8 @@ The site is built with a focus on **Glassmorphism**, **Performance**, and **Micr
 Licensed under **CC BY-SA 4.0**. You are free to share and adapt this material, provided you attribute **CuteSense Studios** and keep the same license.
 
 ---
+
 *Mapping the trajectory of identity. Perfected by people, powered by advocacy.*
+
 ---
 *Drafted by Gemini and refined for accuracy by CuteSense Team* 
