@@ -84,7 +84,8 @@
         }
 
         /* CURSOR SYSTEM */
-        * { cursor: none !important; }
+        .custom-cursor-enabled,
+        .custom-cursor-enabled * { cursor: none !important; }
 
         body { 
             background-color: var(--bg-dark); 
@@ -98,12 +99,18 @@
         .borel { font-family: 'Borel', cursive; }
 
         #cursor {
-            width: 12px; height: 12px; background: #fff; border-radius: 50%;
+            width: 14px; height: 14px; background: rgba(255, 255, 255, 0.95); border-radius: 50%;
             position: fixed; pointer-events: none; z-index: 10000;
-            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease;
             mix-blend-mode: difference; display: none; top: 0; left: 0;
+            transform: translate(-50%, -50%) scale(1);
+            box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.12);
+            will-change: top, left, transform, opacity;
+            opacity: 1;
         }
-        .cursor-hover { transform: scale(4); }
+        .cursor-hover { transform: translate(-50%, -50%) scale(2); }
+        .cursor-active { transform: translate(-50%, -50%) scale(1.25); }
+        .cursor-hidden { opacity: 0 !important; }
 
         #scroll-progress { 
             position: fixed; top: 0; left: 0; height: 2px; 
@@ -186,11 +193,12 @@
         }
         .nav-link:hover::after { width: 100%; }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px), (pointer: coarse), (hover: none), (prefers-reduced-motion: reduce) {
             .timeline-line { left: 28px !important; }
             .timeline-node { left: 28px !important; transform: translateX(-50%); }
             #cursor { display: none !important; }
-            * { cursor: auto !important; } 
+            .custom-cursor-enabled,
+            .custom-cursor-enabled * { cursor: auto !important; } 
         }
 
         .glitch {
@@ -513,13 +521,20 @@
         const cursor = document.getElementById('cursor');
         const glows = [document.getElementById('glow-1'), document.getElementById('glow-2')];
         const isTouch = (('ontouchstart' in window) || (navigator.maxTouchPoints > 0));
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const supportsFinePointer = window.matchMedia('(pointer: fine)').matches && window.matchMedia('(hover: hover)').matches;
 
-        if (!isTouch && window.innerWidth > 1024) {
+        if (cursor && !isTouch && !prefersReducedMotion && supportsFinePointer) {
+            document.body.classList.add('custom-cursor-enabled');
             cursor.style.display = 'block';
-            let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+            cursor.classList.add('cursor-hidden');
+            let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+            let cursorX = mouseX, cursorY = mouseY;
             
-            document.addEventListener('mousemove', (e) => {
+            document.addEventListener('pointermove', (e) => {
+                if (e.pointerType && e.pointerType !== 'mouse') return;
                 mouseX = e.clientX; mouseY = e.clientY;
+                cursor.classList.remove('cursor-hidden');
                 const xP = (mouseX / window.innerWidth) - 0.5;
                 const yP = (mouseY / window.innerHeight) - 0.5;
                 if(glows[0]) glows[0].style.transform = `translate(${xP * 40}px, ${yP * 40}px)`;
@@ -534,11 +549,28 @@
             }
             anim();
 
-            document.addEventListener('mouseover', (e) => { 
-                if (e.target.closest('.interactive') || e.target.tagName === 'A' || e.target.tagName === 'BUTTON') 
-                cursor.classList.add('cursor-hover'); 
+            document.addEventListener('pointerover', (e) => { 
+                const target = e.target instanceof Element ? e.target : null;
+                if (target && target.closest('.interactive, a, button')) {
+                    cursor.classList.add('cursor-hover');
+                }
             });
-            document.addEventListener('mouseout', () => cursor.classList.remove('cursor-hover'));
+            document.addEventListener('pointerout', (e) => {
+                const target = e.target instanceof Element ? e.target : null;
+                const related = e.relatedTarget instanceof Element ? e.relatedTarget : null;
+                const leftInteractive = target && target.closest('.interactive, a, button');
+                const enteredInteractive = related && related.closest('.interactive, a, button');
+                if (leftInteractive && !enteredInteractive) cursor.classList.remove('cursor-hover');
+            });
+
+            document.addEventListener('pointerdown', () => cursor.classList.add('cursor-active'));
+            document.addEventListener('pointerup', () => cursor.classList.remove('cursor-active'));
+            window.addEventListener('blur', () => cursor.classList.add('cursor-hidden'));
+            window.addEventListener('mouseout', (e) => {
+                if (!e.relatedTarget) cursor.classList.add('cursor-hidden');
+            });
+        } else if (cursor) {
+            cursor.style.display = 'none';
         }
 
         window.addEventListener('scroll', () => {
