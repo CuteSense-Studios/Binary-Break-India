@@ -6,7 +6,7 @@
     <title>Binary Break India</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff00ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='2' width='20' height='20' rx='2' ry='2'></rect><path d='M10 10v4'></path><path d='M14 10v4'></path></svg>">
     <link rel="stylesheet" href="./assets/css/tailwind.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="./node_modules/lucide/dist/umd/lucide.min.js" defer></script>
     <style>
         /* --- LOCAL FONTS --- */
         @font-face { font-family: 'Borel'; src: url('./assets/fonts/borel-v10-latin-regular/borel-v10-latin-regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
@@ -169,7 +169,7 @@
                 </div>
                 <!-- FIXED OM ICON SVG -->
                 <div class="absolute left-0 md:relative w-14 h-14 shrink-0 bg-blue-500 rounded-full z-10 flex items-center justify-center border-[6px] border-black interactive shadow-2xl transition-all hover:scale-125">
-                    <img src="https://www.svgrepo.com/show/127337/om.svg" alt="Om Icon" class="w-6 h-6" />
+                    <img src="./assets/icons/om-icon.svg" alt="Om Icon" class="w-6 h-6" />
                 </div>
                 <div class="w-full md:w-1/2 md:pl-16 pl-14 md:pl-16">
                     <span class="text-[10px] font-black px-4 py-1.5 bg-blue-900/40 text-blue-100 rounded-full mb-3 inline-block border border-blue-500/20">PRE-COLONIAL SACREDNESS</span>
@@ -329,7 +329,7 @@
 
                 <div class="text-center p-10 bg-black/40 rounded-[3rem] border border-white/5 interactive section-reveal" style="--stagger-idx: 3">
                     <div class="w-36 h-36 mx-auto mb-8 flex items-center justify-center text-5xl font-black text-yellow-500 border-[6px] border-yellow-500/10 rounded-full transition-all hover:rotate-12">
-                        <img src="https://www.svgrepo.com/show/127337/om.svg" alt="Om Icon" class="w-10 h-10" style="filter: invert(72%) sepia(87%) saturate(545%) hue-rotate(354deg) brightness(101%) contrast(102%);" />
+                        <img src="./assets/icons/om-icon.svg" alt="Om Icon" class="w-10 h-10" style="filter: invert(72%) sepia(87%) saturate(545%) hue-rotate(354deg) brightness(101%) contrast(102%);" />
                     </div>
                     <h4 class="text-xl font-black mb-4 uppercase tracking-tighter">Inheritance Trap</h4>
                     <p class="text-base text-gray-400 leading-relaxed font-light">Binary codes (Hindu Succession Act 1956) strip trans heirs of rights.</p>
@@ -370,8 +370,17 @@
     </div>
 
     <script>
+        // --- Lucide Icons initialization (deferred with retry)
+        function initLucide() {
+            if (window.lucide) {
+                lucide.createIcons();
+            } else {
+                setTimeout(initLucide, 100);
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            if (window.lucide) { lucide.createIcons(); }
+            initLucide();
             reveal();
         });
         
